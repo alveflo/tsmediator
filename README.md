@@ -2,8 +2,6 @@
 
 <a href="https://travis-ci.org/alveflo/html5ify"><img src="https://travis-ci.org/alveflo/tsmediator.svg?branch=master"/></a>
 <a href="https://www.npmjs.com/package/tsmediator"><img src="https://badge.fury.io/js/tsmediator.svg"/></a>
-<a href="https://codeclimate.com/github/alveflo/tsmediator"><img src="https://codeclimate.com/github/alveflo/tsmediator/badges/gpa.svg" /></a>
-<a href="http://packagequality.com/#?package=tsmediator"><img src="http://npm.packagequality.com/shield/tsmediator.svg"/></a>
 <a href="https://www.npmjs.com/package/tsmediator"><img src="https://img.shields.io/npm/l/express.svg?maxAge=2592000"/></a>
 Tiny flexible mediator implemented in TypeScript
 
