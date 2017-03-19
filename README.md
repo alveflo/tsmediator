@@ -16,7 +16,7 @@ $ npm install --save tsmediator
 ```
 $ git clone https://github.com/alveflo/tsmediator.git
 $ cd tsmediator
-$ npm test
+$ npm install && npm test
 ```
 
 # Usage
