@@ -81,7 +81,7 @@ mediator.Request(QueryHandler.Type, 5);
 ```
 ## Overriding mediator behaviour
 You can easily override the default mediator behaviour by extending the `BaseMediator`. The only thing you need to do is to resolve the registrated handler class by calling `BaseMediator.Resolve(message)`. The message to handler connections are handled under the hood, so you don't need to worry about that at all.
-```
+```TypeScript
 import { BaseMediator } from "./baseMediator";
 
 export class MyCustomMediator extends BaseMediator {
