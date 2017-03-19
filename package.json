@@ -1,0 +1,59 @@
+{
+  "name": "tsmediator",
+  "version": "0.0.1",
+  "description": "Tiny flexible mediator implemented in TypeScript",
+  "main": "./lib/index.js",
+  "scripts": {
+    "postinstall": "typings install dt~mocha dt~require dt~chai --save --global",
+    "lint": "tslint -t stylish './src/**/*.ts'",
+    "test": "nyc mocha",
+    "apatest": "mocha --compilers ts:ts-node/register test/**/*.spec.ts",
+    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec test/**/*.spec.ts"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "test/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alveflo/tsmediator.git"
+  },
+  "keywords": [
+    "mediator",
+    "typescript"
+  ],
+  "author": "Victor Alveflo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alveflo/tsmediator/issues"
+  },
+  "homepage": "https://github.com/alveflo/tsmediator#readme",
+    "dependencies": {},
+  "devDependencies": {
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.8",
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
+    "source-map-support": "^0.4.14",
+    "ts-node": "^2.1.0",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1",
+    "typings": "^2.1.0"
+  }
+}
