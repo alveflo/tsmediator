@@ -77,7 +77,7 @@ class QueryHandler implements IQueryHandler<string, string> {
 ```
 ## Send/request example
 The following example shows how you would send a command and/or request a query into the registrated handlers above.
-```
+```TypeScript
 import { Mediator } from 'tsmediator';
 let mediator: Mediator = new Mediator();
 
