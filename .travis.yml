@@ -7,8 +7,6 @@ install:
 deploy:
   provider: npm
   email: victor.alveflo@gmail.com
-  api_key:
-    secure: S9XjJHDrg2Vw/mHfhDYGrtc9PhNJ1E7/QyD6EEUI22EMOfUQMwGZM6c7rdCJH4HcdLXwxpazw/AVBUgtZOulpg1YSKlrLAUe9Z79nnQ4uJmg02ugXcyUW/m826PLhhcZi1UEjIbebqovL87ZFpjGn0LcA1SgiZukpfPPLrnEUv5nNlK3r2GUXJFr51pFW3YrYq2i5Mbri9qrn/uQcbLiL4VFqyibdn4mFyAR6UUv+J4vxY2VS2V1YTsMZwMylRMlPGnLY8oYKNxA29XeBok6KwdqnCpZbxZoINOEZQosnWzrQYkElo4ku25Dnc1heXxCW7Af6TjEkmuRqCZ/n0zgvhxVKJooL15xUc56Hvq4f2gi7MrZcF8z7nU2s3Apc5nCfkNdezFxe8tbxO2BNYEk3rFYcLhhZmCo3rYlpq3AoWsA2NhvLtYFTEHSj7Tn4bo9v8/9kiMyb3hbJ/AUcVPYpI1KqrZbLU8/HCDeSBKqM9Xym/ZJ+bzDWR1ZorAbxHXwATFJ2lnEtn3fR/t6iq1KOCEycFb9rwG7+EnLmOt/Z+IYwPSfjP4Zps2Sov8l8Ihn3icIt+CjmBQNqkDlr+29XkKupM2/njie7BW30uaTKzCuEqj+QYRr+R2PL17x9dbCttxmZV2C2hsKzIVDWELc03loHlJOgfbWzlQPXwaKmxQ=
   on:
     tags: true
     repo: alveflo/tsmediator
