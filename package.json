@@ -4,7 +4,6 @@
   "description": "Tiny flexible mediator implemented in TypeScript",
   "main": "./lib/index.js",
   "scripts": {
-    "postinstall": "typings install dt~mocha dt~require dt~chai --save --global",
     "lint": "tslint -t stylish './src/**/*.ts'",
     "test": "nyc mocha",
     "apatest": "mocha --compilers ts:ts-node/register test/**/*.spec.ts",
@@ -42,8 +41,9 @@
     "url": "https://github.com/alveflo/tsmediator/issues"
   },
   "homepage": "https://github.com/alveflo/tsmediator#readme",
-    "dependencies": {},
+  "dependencies": {},
   "devDependencies": {
+    "@types/chai": "^4.1.4",
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.8",
     "chai": "^3.5.0",
@@ -53,7 +53,6 @@
     "source-map-support": "^0.4.14",
     "ts-node": "^2.1.0",
     "tslint": "^4.5.1",
-    "typescript": "^2.2.1",
-    "typings": "^2.1.0"
+    "typescript": "^2.2.1"
   }
 }
