@@ -22,6 +22,11 @@
       "text-summary",
       "html"
     ],
+    "require": [
+      "ts-node/register",
+      "@types/chai",
+      "@types/node"
+    ],
     "sourceMap": true,
     "instrument": true
   },
