@@ -6,27 +6,8 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "lint": "tslint -t stylish './src/**/*.ts'",
-    "test": "nyc mocha",
-    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec test/**/*.spec.ts",
+    "test": "mocha",
     "build": "cd ./src && tsc"
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.ts",
-      "test/**/*.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "reporter": [
-      "text-summary",
-      "html"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "sourceMap": true,
-    "instrument": true
   },
   "repository": {
     "type": "git",
