@@ -1,5 +1,9 @@
-import { ICommandHandler, IQueryHandler, Mediator } from '../src/index';
-import { Handler } from '../src/index';
+///<reference path="../node_modules/@types/node/index.d.ts"/>
+///<reference path="../node_modules/@types/chai/index.d.ts"/>
+///<reference path="../node_modules/@types/mocha/index.d.ts"/>
+
+import { ICommandHandler, IQueryHandler, Mediator } from '../lib/index';
+import { Handler } from '../lib/index';
 import { expect } from 'chai';
 
 @Handler(CmdHandler.Type)
