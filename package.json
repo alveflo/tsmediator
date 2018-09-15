@@ -1,14 +1,13 @@
 {
   "name": "tsmediator",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Tiny flexible mediator implemented in TypeScript",
-  "main": "./lib/index.js",
+  "main": "./lib/src/index.js",
   "scripts": {
-    "postinstall": "typings install dt~mocha dt~require dt~chai --save --global",
     "lint": "tslint -t stylish './src/**/*.ts'",
     "test": "nyc mocha",
-    "apatest": "mocha --compilers ts:ts-node/register test/**/*.spec.ts",
-    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec test/**/*.spec.ts"
+    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec test/**/*.spec.ts",
+    "build": "cd ./src && tsc"
   },
   "nyc": {
     "include": [
@@ -17,9 +16,6 @@
     ],
     "extension": [
       ".ts"
-    ],
-    "require": [
-      "ts-node/register"
     ],
     "reporter": [
       "text-summary",
@@ -44,7 +40,7 @@
   "homepage": "https://github.com/alveflo/tsmediator#readme",
     "dependencies": {},
   "devDependencies": {
-    "@types/mocha": "^2.2.40",
+    "@types/chai": "^2.2.40",
     "@types/node": "^7.0.8",
     "chai": "^3.5.0",
     "istanbul": "^0.4.5",
