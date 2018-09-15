@@ -23,9 +23,7 @@
       "html"
     ],
     "require": [
-      "ts-node/register",
-      "@types/chai",
-      "@types/node"
+      "ts-node/register"
     ],
     "sourceMap": true,
     "instrument": true
