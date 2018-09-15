@@ -8,7 +8,6 @@
         "preserveConstEnums": true,
         "declaration": true,
         "suppressImplicitAnyIndexErrors": true,
-        "experimentalDecorators": true,
-        "types": [ "node", "mocha", "chai" ]
+        "experimentalDecorators": true
     }
 }
