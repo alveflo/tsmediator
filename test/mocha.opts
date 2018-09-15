@@ -2,5 +2,4 @@
 --require source-map-support/register
 --full-trace
 --bail
---require ts-node/register
 test/**/*.ts
