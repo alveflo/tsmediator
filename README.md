@@ -47,7 +47,7 @@ class CmdHandler implements ICommandHandler<string, number> {
         }
     }
 
-    Handle(payload: number) {
+    Handle(payload: string) {
         return 5 * 5;
     }
 }    
