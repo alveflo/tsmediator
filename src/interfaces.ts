@@ -9,3 +9,8 @@ export interface IQueryHandler<T, K> {
     Handle: (query: T) => K;
     Log: () => void;
 }
+
+export interface IMediatorMiddleware {
+    PreProcess: () => void;
+    PostProcess: () => void;
+}
