@@ -11,6 +11,6 @@ export interface IQueryHandler<T, K> {
 }
 
 export interface IMediatorMiddleware {
-    PreProcess: () => void;
-    PostProcess: () => void;
+    PreProcess: (request: any) => void;
+    PostProcess: (request: any, response: any) => void;
 }

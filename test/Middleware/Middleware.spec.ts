@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { Handler, Mediator, IMediatorMiddleware } from "../../lib/index";
 import { ICommandHandler } from "../../lib";
 
+let messages: string[] = [];
 
 @Handler(MiddlewareHandler.Type)
 class MiddlewareHandler implements ICommandHandler<string, string> {
@@ -16,11 +17,10 @@ class MiddlewareHandler implements ICommandHandler<string, string> {
     }
 
     Handle(payload: string): string {
+        messages.push("handler");
         return `msg: ${payload}`;
     }
 }
-
-let messages: string[] = [];
 
 class TestMiddlewareOne implements IMediatorMiddleware {
     public PreProcess(): void {
@@ -34,11 +34,11 @@ class TestMiddlewareOne implements IMediatorMiddleware {
 
 class TestMiddlewareTwo implements IMediatorMiddleware {
     public messages: string[] = [];
-    public PreProcess(): void {
+    public PreProcess(request: any): void {
         messages.push("pre process from two");
     }
 
-    public PostProcess(): void {
+    public PostProcess(request: any, response: any): void {
         messages.push("post process from two");
     }
 }
@@ -58,9 +58,10 @@ describe("Mediator", () => {
             mediator.RegisterMiddleware(testMiddleware);
             mediator.Send(MiddlewareHandler.Type, "foo bar");
 
-            expect(messages.length).to.equal(2);
+            expect(messages.length).to.equal(3);
             expect(messages[0]).to.equal("pre process from one");
-            expect(messages[1]).to.equal("post process from one");
+            expect(messages[1]).to.equal("handler");
+            expect(messages[2]).to.equal("post process from one");
         });
 
         it(`should run registered middleware in correct order`, () => {
@@ -71,11 +72,12 @@ describe("Mediator", () => {
             mediator.RegisterMiddleware(testMiddlewareTwo);
             mediator.Send(MiddlewareHandler.Type, "foo bar");
 
-            expect(messages.length).to.equal(4);
+            expect(messages.length).to.equal(5);
             expect(messages[0]).to.equal("pre process from one");
             expect(messages[1]).to.equal("pre process from two");
-            expect(messages[2]).to.equal("post process from two");
-            expect(messages[3]).to.equal("post process from one");
+            expect(messages[2]).to.equal("handler");
+            expect(messages[3]).to.equal("post process from two");
+            expect(messages[4]).to.equal("post process from one");
         });
     });
 });
