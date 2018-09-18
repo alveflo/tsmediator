@@ -55,7 +55,7 @@ describe("Mediator", () => {
         it(`should run registered middleware`, () => {
             let testMiddleware: TestMiddlewareOne = new TestMiddlewareOne();
 
-            mediator.RegisterMiddleware(testMiddleware);
+            mediator.Use(testMiddleware);
             mediator.Send(MiddlewareHandler.Type, "foo bar");
 
             expect(messages.length).to.equal(3);
@@ -68,8 +68,8 @@ describe("Mediator", () => {
             let testMiddlewareOne: TestMiddlewareOne = new TestMiddlewareOne();
             let testMiddlewareTwo: TestMiddlewareTwo = new TestMiddlewareTwo();
 
-            mediator.RegisterMiddleware(testMiddlewareOne);
-            mediator.RegisterMiddleware(testMiddlewareTwo);
+            mediator.Use(testMiddlewareOne);
+            mediator.Use(testMiddlewareTwo);
             mediator.Send(MiddlewareHandler.Type, "foo bar");
 
             expect(messages.length).to.equal(5);
