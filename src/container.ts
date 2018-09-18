@@ -1,11 +1,11 @@
 export namespace Container {
     let container: any = {};
 
-    export function Register(message: string, callback: Function) {
+    export function Register(message: string, callback: Function): void {
         container[message] = callback;
     }
 
-    export function Get(message): Function {
+    export function Get(message: string): Function {
         if (container.hasOwnProperty(message)) {
             return container[message];
         }
