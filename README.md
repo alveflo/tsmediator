@@ -21,12 +21,12 @@ $ npm install && npm test
 
 # Usage
 ## Setup
-No setup is required per se, other than registrating handlers for specific messages (commands/queries). However, this implemented relies on ES7 decorators and therefore `experimentalDecorators` needs to be set to `true` in your `tsconfig.json` file.
+No setup is required per se, other than registering handlers for specific messages (commands/queries). However, this implemented relies on ES7 decorators and therefore `experimentalDecorators` needs to be set to `true` in your `tsconfig.json` file.
 
 ## API
 `Mediator`
-- `Mediator.Send(type: string, payload: T)` where `type` is the registrated message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
-- `Mediator.Request(type: string, payload: T)` where `type` is the registrated message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
+- `Mediator.Send(type: string, payload: T)` where `type` is the registered message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
+- `Mediator.Request(type: string, payload: T)` where `type` is the registered message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
 
 ## Registering handlers
 Registering a handler is easy, simple add the decorator `Handler(message)` onto your class, and implement the `ICommand`/`IQuery` interface and you're ready to roll.
@@ -117,7 +117,7 @@ mediator.Use(loggingMiddleware);
 ```
 
 ## Overriding mediator behaviour
-You can easily override the default mediator behaviour by extending the `BaseMediator`. The only thing you need to do is to resolve the registrated handler class by calling `BaseMediator.Resolve(message)`. The message to handler connections are handled under the hood, so you don't need to worry about that at all.
+You can easily override the default mediator behaviour by extending the `BaseMediator`. The only thing you need to do is to resolve the registered handler class by calling `BaseMediator.Resolve(message)`. The message to handler connections are handled under the hood, so you don't need to worry about that at all.
 ```TypeScript
 import { BaseMediator } from "./baseMediator";
 
