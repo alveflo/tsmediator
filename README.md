@@ -105,7 +105,7 @@ class LoggingMiddleware implements IMediatorMiddleware {
     }
 
     public PostProcess(payload: any, response: any): void {
-        messages.push(`Was: ${JSON.stringify(payload)}, now is: ${JSON.stringify(response)}`);
+        logger.Log(`Was: ${JSON.stringify(payload)}, now is: ${JSON.stringify(response)}`);
     }
 }
 ```
