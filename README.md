@@ -21,15 +21,15 @@ $ npm install && npm test
 
 # Usage
 ## Setup
-No setup is required per se, other than registrating handlers for specific messages (commands/queries). However, this implemented relies on ES7 decorators and therefore `experimentalDecorators` needs to be set to `true` in your `tsconfig.json` file.
+No setup is required per se, other than registering handlers for specific messages (commands/queries). However, this implemented relies on ES7 decorators and therefore `experimentalDecorators` needs to be set to `true` in your `tsconfig.json` file.
 
 ## API
 `Mediator`
-- `Mediator.Send(type: string, payload: T)` where `type` is the registrated message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
-- `Mediator.Request(type: string, payload: T)` where `type` is the registrated message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
+- `Mediator.Send(type: string, payload: T)` where `type` is the registered message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
+- `Mediator.Request(type: string, payload: T)` where `type` is the registered message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
 
-## Registrating handlers
-Registrating a handler is easy, simple add the decorator `Handler(message)` onto your class, and implement the `ICommand`/`IQuery` interface and you're ready to roll.
+## Registering handlers
+Registering a handler is easy, simple add the decorator `Handler(message)` onto your class, and implement the `ICommand`/`IQuery` interface and you're ready to roll.
 ### Command handler example
 ```TypeScript
 import { ICommandHandler, Handler } from 'tsmediator';
@@ -76,7 +76,7 @@ class QueryHandler implements IQueryHandler<string, string> {
 }
 ```
 ## Send/request example
-The following example shows how you would send a command and/or request a query into the registrated handlers above.
+The following example shows how you would send a command and/or request a query into the registered handlers above.
 ```TypeScript
 import { Mediator } from 'tsmediator';
 let mediator: Mediator = new Mediator();
@@ -84,8 +84,40 @@ let mediator: Mediator = new Mediator();
 mediator.Send(CmdHandler.Type, 5);
 mediator.Request(QueryHandler.Type, 'foo bar');
 ```
+## Middlewares
+The mediator also supports adding middleware to the mediator. This is used if you have any generic actions that you would like to be triggered every time a the mediator is used. What you need to do is create a class that implements `IMediatorMiddleware` and register the middleware with the mediator. 
+
+### Execution order
+The order that you register the middlewares will also be the order that they will be executed.
+If you have registered two middlewares they will be executed in this order: Middleware1 -> Middleware2 -> Handler -> Middleware2 -> Middleware1
+
+### Example
+As an example we can easily create a logging middleware:
+```TypeScript
+class LoggingMiddleware implements IMediatorMiddleware {
+    private logger: ILogger;
+    constructor() {
+        this.logger = new Logger();
+    }
+
+    public PreProcess(payload: any): void {
+        logger.Log(`Processing object ${JSON.stringify(payload)}`)
+    }
+
+    public PostProcess(payload: any, response: any): void {
+        logger.Log(`Was: ${JSON.stringify(payload)}, now is: ${JSON.stringify(response)}`);
+    }
+}
+```
+
+To register the middleware, you do this:
+```TypeScript
+let loggingMiddleware = new LoggingMiddleware();
+mediator.Use(loggingMiddleware);
+```
+
 ## Overriding mediator behaviour
-You can easily override the default mediator behaviour by extending the `BaseMediator`. The only thing you need to do is to resolve the registrated handler class by calling `BaseMediator.Resolve(message)`. The message to handler connections are handled under the hood, so you don't need to worry about that at all.
+You can easily override the default mediator behaviour by extending the `BaseMediator`. The only thing you need to do is to resolve the registered handler class by calling `BaseMediator.Resolve(message)`. The message to handler connections are handled under the hood, so you don't need to worry about that at all.
 ```TypeScript
 import { BaseMediator } from "./baseMediator";
 
