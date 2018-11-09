@@ -8,10 +8,6 @@ export class Mediator extends BaseMediator {
         return this.Process(command, payload);
     }
 
-    public Request(query: string, payload: any): any {
-        return this.Process(query, payload);
-    }
-
     public Use(middleware: IMediatorMiddleware): void {
         this.middlewares.push(middleware);
     }
