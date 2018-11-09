@@ -52,37 +52,13 @@ class CmdHandler implements ICommandHandler<string, number> {
 }    
 ```
 
-### Query handler example
-```TypeScript
-import { IQueryHandler, Handler } from 'tsmediator';
-
-@Handler(QueryHandler.Type)
-class QueryHandler implements IQueryHandler<string, string> {
-    public static get Type():string { return "bar"; }
-
-    Log() {
-
-    }
-
-    Validate(payload: string) {
-        if (payload !== 'foo bar') {
-            throw Error('Some error');
-        }
-    }
-
-    Handle(payload: string) {
-        return `msg: ${payload}`;
-    }
-}
-```
-## Send/request example
-The following example shows how you would send a command and/or request a query into the registered handlers above.
+## Send example
+The following example shows how you would send a command into the registered handlers above.
 ```TypeScript
 import { Mediator } from 'tsmediator';
 let mediator: Mediator = new Mediator();
 
 mediator.Send(CmdHandler.Type, 5);
-mediator.Request(QueryHandler.Type, 'foo bar');
 ```
 ## Middlewares
 The mediator also supports adding middleware to the mediator. This is used if you have any generic actions that you would like to be triggered every time a the mediator is used. What you need to do is create a class that implements `IMediatorMiddleware` and register the middleware with the mediator. 
