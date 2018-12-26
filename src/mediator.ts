@@ -17,12 +17,15 @@ export class Mediator extends BaseMediator {
         this.middlewares.forEach(m => m.PreProcess(payload));
 
         try {
-            handler.Validate(payload);
+            if(handler.Validate)
+                handler.Validate(payload);
         } catch (ex) {
             throw ex;
         }
 
-        handler.Log();
+        if(handler.Log)
+            handler.Log();
+        
         let response: any = handler.Handle(payload);
         this.middlewares.reverse().forEach(m => m.PostProcess(payload, response));
         return response;
