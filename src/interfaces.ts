@@ -1,7 +1,7 @@
 export interface ICommandHandler<T, K> {
-    Validate: (command: T) => void;
+    Validate?: (command: T) => void;
     Handle: (command: T) => K;
-    Log: () => void;
+    Log?: () => void;
 }
 
 export interface IMediatorMiddleware {

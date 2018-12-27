@@ -23,6 +23,15 @@ class CmdHandler implements ICommandHandler<string, string> {
     }
 }
 
+@Handler(CmdHandlerOptionalProps.Type)
+class CmdHandlerOptionalProps implements ICommandHandler<string, string> {
+    public static get Type():string { return "cmdMsgOptionalProps"; }
+
+    Handle(payload: string): string {
+        return `msg: optional props ${payload}`;
+    }
+}
+
 describe("Mediator", () => {
     var mediator : Mediator;
 
@@ -46,4 +55,12 @@ describe("Mediator", () => {
             expect(thrown).to.equal(true);
         });
     });
+
+    describe("CommandHandlerOptionalProps", () => {
+        it(`should return handle even if Log or Payload are not present`, () => {
+            let result : string = mediator.Send(CmdHandlerOptionalProps.Type, "foo bar");
+            expect(result).to.equal("msg: optional props foo bar");
+        });
+    });
+    
 })
