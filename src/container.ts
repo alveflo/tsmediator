@@ -11,7 +11,7 @@ export namespace Container {
     }
 
     export function Get(message: string): Function {
-        if (container.hasOwnProperty(message)) {
+        if (container.handlers.hasOwnProperty(message)) {
             return container.handlers[message];
         }
 
