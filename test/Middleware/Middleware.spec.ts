@@ -1,6 +1,5 @@
 import { expect } from "chai";
-import { Handler, Mediator, IMediatorMiddleware } from "../../lib/index";
-import { ICommandHandler } from "../../lib";
+import { Handler, Mediator, IMediatorMiddleware, ICommandHandler } from "../../src";
 
 let messages: string[] = [];
 

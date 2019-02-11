@@ -2,8 +2,7 @@
 ///<reference path="../node_modules/@types/chai/index.d.ts"/>
 ///<reference path="../node_modules/@types/mocha/index.d.ts"/>
 
-import { ICommandHandler, Mediator } from "../lib/index";
-import { Handler } from "../lib/index";
+import { ICommandHandler, Mediator, Handler } from "../src";
 import { expect } from "chai";
 
 @Handler(CmdHandler.Type)
