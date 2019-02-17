@@ -4,3 +4,10 @@ node_js:
 install:
 - npm install
 - npm test
+
+deploy:
+  provider: npm
+  email: "victor.alveflo@gmail.com"
+  api_key: "${npm_token}"
+  on:
+    tags: true
