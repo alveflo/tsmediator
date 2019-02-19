@@ -4,6 +4,7 @@ node_js:
 install:
 - npm install
 - npm test
+- npm run build
 
 deploy:
   provider: npm
