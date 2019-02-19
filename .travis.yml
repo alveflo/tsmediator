@@ -10,5 +10,6 @@ deploy:
   provider: npm
   email: "victor.alveflo@gmail.com"
   api_key: "${npm_token}"
+  skip_cleanup: true
   on:
     tags: true
