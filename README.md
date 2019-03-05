@@ -26,10 +26,9 @@ No setup is required per se, other than registering handlers for specific messag
 ## API
 `Mediator`
 - `Mediator.Send(type: string, payload: T)` where `type` is the registered message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
-- `Mediator.Request(type: string, payload: T)` where `type` is the registered message type and payload is the data sent, where `T` is the datatype that the handler is expected to process.
 
 ## Registering handlers
-Registering a handler is easy, simple add the decorator `Handler(message)` onto your class, and implement the `ICommand`/`IQuery` interface and you're ready to roll. Note that this automatic registration only works if you, somewhere in your code, is referring to the handlers type (e.g. `CmdHandler.Type` as shown below).
+Registering a handler is easy, simple add the decorator `Handler(message)` onto your class, and implement the `ICommandHandler` interface and you're ready to roll. Note that this automatic registration only works if you, somewhere in your code, is referring to the handlers type (e.g. `CmdHandler.Type` as shown below).
 
 If you're not explicitly referring to the handlers type, the decorator will not be run automatically and the handler will not be registered. In this case you might want to register the handler manually. In that case, simply use
 ```TypeScript
