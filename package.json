@@ -1,6 +1,6 @@
 {
   "name": "tsmediator",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Tiny flexible mediator implemented in TypeScript",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
