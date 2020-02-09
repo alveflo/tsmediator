@@ -1,4 +1,4 @@
-import { IContainer, ICommandHandler } from "./interfaces";
+import { IContainer } from "./interfaces";
 
 export namespace Container {
     const container: IContainer = {
